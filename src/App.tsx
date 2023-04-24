@@ -5,13 +5,14 @@ import CountryDiv from './components/CountryDiv'
 
 function App() {
   const [countries, setCountries] = useState<Country[]>([]);
-
+  
+  const fetchCountries = async () => {
+    const url = '/src/countries/data.json';
+    const DATA = await fetch(url).then(res => res.json());
+    setCountries(DATA);
+  }
+  
   useEffect( () => {
-    const fetchCountries = async () => {
-      const url = '/src/countries/data.json';
-      const DATA = await fetch(url).then(res => res.json());
-      setCountries(DATA);
-    }
     fetchCountries();
   }, []);
   
@@ -21,12 +22,13 @@ function App() {
   }, [countries]);
 
   return (
-    <>
-      {countries.map((country, i) => {
-        return <CountryDiv key={i} country={country} />
-      })
-      }
-    </>
+    <div id="app" className="light-theme">
+      <main>
+        {countries.slice(0, 20).map((country, i) => {
+          return <CountryDiv key={i} country={country} />
+        })}
+      </main>
+    </div>
   )
 }
 
