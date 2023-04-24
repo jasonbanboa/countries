@@ -6,10 +6,11 @@ interface CountryDivProps {
   country: Country;
 }
 
-const CountryDiv: React.FC<CountryDivProps> = (props) => {
+const CountryDiv: React.FC<CountryDivProps> = ({ country: { name, population, flag } }) => {
   return (
     <article className="indi-country">
-      {JSON.stringify(props.country)}
+      <img src={flag} alt={name} />
+      {`${name}  ${population}`}
     </article>
   );
 }

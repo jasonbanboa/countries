@@ -17,6 +17,7 @@ function App() {
   
   useEffect(() => {
     console.log(countries);
+    
   }, [countries]);
 
   return (
