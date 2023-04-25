@@ -6,7 +6,9 @@
   font-family: 'Nunito Sans', sans-serif;
   font-size: inherit;
 }
-
+*::selection {
+  background-color: rgb(222, 239, 254);
+}
 .f-800 {font-weight: 800;}
 .f-600 {font-weight: 600;}
 .f-300 {font-weight: 300;}
@@ -103,6 +105,7 @@ main {
   width: 1.2rem;
 }
 #filter-by-region {
+  cursor: pointer;
   border-radius: 3px;
   display: flex;
   align-items: center;
@@ -116,7 +119,8 @@ main {
   height: 50px;
   width: 200px;
 }
-#filter-by-region #select-region {
+#filter-by-region .select-region {
+  display: block;
   border-radius: 3px;
   position: absolute;
   left: 0;
@@ -124,14 +128,26 @@ main {
   background-color: var(--element);
   top: 110%;
   color: var(--high-contrast);
-  padding: 1rem;
   box-shadow: 0px 1px 10px 2px var(--box-shadow);
-  height: 172px;
+  height: 0;
+  transition: all .25s;
+  overflow: hidden;
 }
-#filter-by-region #select-region div {
+#filter-search .open-regions-select {
+  height: 220px;
+}
+#filter-by-region .select-region .wrapper {
+  padding: 1rem;
+}
+#filter-by-region .select-region .wrapper div {
+  padding: 5px;
   margin: 5px 0;
   font-weight: 600;
   cursor: pointer;
+  transition: all .2s;
+}
+#filter-by-region .select-region .wrapper div:hover {
+  background-color: var(--box-shadow);
 }
 #filter-by-region > svg {
   position: absolute;
