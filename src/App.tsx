@@ -1,7 +1,7 @@
-
 import { useEffect, useState } from "react"
 import { Country } from "./countriesService"
 import CountryDiv from './components/CountryDiv' 
+import FilterSearch from "./components/FilterSearch"
 
 function App() {
   const [countries, setCountries] = useState<Country[]>([]);
@@ -23,6 +23,7 @@ function App() {
 
   return (
     <div id="app" className="light-theme">
+      <FilterSearch />
       <main>
         {countries.slice(0, 20).map((country, i) => {
           return <CountryDiv key={i} country={country} />

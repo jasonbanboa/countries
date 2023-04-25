@@ -48,6 +48,7 @@ main {
   justify-content: center;
 }
 .indi-country {
+  cursor: pointer;
   border-radius: 7px;
   max-width: 265px;
   flex: 1;
