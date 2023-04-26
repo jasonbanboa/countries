@@ -1,10 +1,11 @@
-import React, { useRef, MouseEvent } from 'react'
+import React, { useRef, MouseEvent, useState } from 'react'
 
 const FilterSearch: React.FC = () => {
   const selectRegion = useRef<HTMLDivElement>(null);
+  const [open, setOpen] = useState(false);
 
   const handleFilterClick = () => {
-    selectRegion.current?.classList.toggle('open-regions-select');
+    setOpen(() => open ? false : true);
   }
 
   const handleRegionSelect = (e: MouseEvent<HTMLDivElement>) => {
@@ -21,7 +22,7 @@ const FilterSearch: React.FC = () => {
       <fieldset id="filter-by-region" onClick={handleFilterClick}>
         Filter  by Region
         <svg xmlns="http://www.w3.org/2000/svg" className="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="48" d="M112 184l144 144 144-144"/></svg>
-        <div role="button" className="select-region" ref={selectRegion}>
+        <div role="button" className={`select-region ${open ? 'open-regions-select' : ''}`} ref={selectRegion}>
           <div className="wrapper">
             <div onClick={handleRegionSelect} data-region="Africa" role="button">Africa</div>
             <div onClick={handleRegionSelect} data-region="America" role="button">America</div>
