@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './App.css'
 import Index from './components/Index'
+import About from './components/About'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
   }, 
   {
     path: '/about/:countryName',
-    element: <h1>about page</h1>
+    element: <About />
   },
 ]);
 

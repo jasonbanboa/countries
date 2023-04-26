@@ -23,7 +23,7 @@ const FilterSearch: React.FC = () => {
   }
 
   return (
-    <section id="filter-search">
+    <section id="filter-search" className="filter-search responsive">
       <form id="search-form" onSubmit={handleSubmit}>
         <input ref={searchInput} id="country-search" type="text" placeholder="Search for a country..." />
         <div onClick={search} role="button" className="svg-container">
