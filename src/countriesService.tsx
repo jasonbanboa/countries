@@ -54,3 +54,8 @@ export type Country = {
   independent: boolean;
 } 
 
+export default async function fetchCountries(): Promise<Country[]> {
+  const url = '/src/countries/data.json';
+  const DATA = await fetch(url).then(res => res.json());
+  return DATA;
+}

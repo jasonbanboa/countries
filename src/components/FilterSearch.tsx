@@ -1,4 +1,5 @@
-import React, { useRef, MouseEvent, useState } from 'react'
+import React, { useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const FilterSearch: React.FC = () => {
   const selectRegion = useRef<HTMLDivElement>(null);
@@ -7,11 +8,6 @@ const FilterSearch: React.FC = () => {
   const handleFilterClick = () => {
     setOpen(() => open ? false : true);
   }
-
-  const handleRegionSelect = (e: MouseEvent<HTMLDivElement>) => {
-    const region = e.currentTarget.dataset.region;
-    console.log(region);
-  };
 
   return (
     <section id="filter-search">
@@ -24,11 +20,11 @@ const FilterSearch: React.FC = () => {
         <svg xmlns="http://www.w3.org/2000/svg" className="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="48" d="M112 184l144 144 144-144"/></svg>
         <div role="button" className={`select-region ${open ? 'open-regions-select' : ''}`} ref={selectRegion}>
           <div className="wrapper">
-            <div onClick={handleRegionSelect} data-region="Africa" role="button">Africa</div>
-            <div onClick={handleRegionSelect} data-region="America" role="button">America</div>
-            <div onClick={handleRegionSelect} data-region="Asia" role="button">Asia</div>
-            <div onClick={handleRegionSelect} data-region="Europe" role="button">Europe</div>
-            <div onClick={handleRegionSelect} data-region="Oceania" role="button">Oceania</div>
+            <Link to="/region/Africa"><div role="button">Africa</div></Link>
+            <Link to="/region/Americas"><div role="button">Americas</div></Link>
+            <Link to="/region/Asia"><div role="button">Asia</div></Link>
+            <Link to="/region/Europe"><div role="button">Europe</div></Link>
+            <Link to="/region/Oceania"><div role="button">Oceania</div></Link>
           </div>
         </div>
       </fieldset>
