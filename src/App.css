@@ -6,6 +6,9 @@
   font-family: 'Nunito Sans', sans-serif;
   font-size: inherit;
 }
+*[role="button"] {
+  cursor: pointer;
+}
 
 a {text-decoration: none; color: inherit; font-weight: inherit;}
 
@@ -27,6 +30,7 @@ img {
 #app {
   transition: all .25s;
   padding-top: 0;
+  min-height: 100vh;
 }
 #app.light-theme {
   --element: hsl(0, 0%, 100%);
@@ -139,12 +143,13 @@ main {
   height: 50px;
   
 }
-#search-form svg {
+#search-form .svg-container {
   position: absolute;
   left: 1.25rem;
   top: 50%;
   transform: translateY(-50%);
   width: 1.2rem;
+  height: 1.2rem;
 }
 #filter-by-region {
   cursor: pointer;
@@ -176,13 +181,14 @@ main {
   overflow: hidden;
 }
 #filter-search .open-regions-select {
-  height: 220px;
+  height: 259px;
 }
 #filter-by-region .select-region .wrapper {
   padding: 1rem;
 }
 #filter-by-region .select-region .wrapper div {
-  padding: 5px;
+  border-radius: 5px;
+  padding: 5px 10px;
   margin: 5px 0;
   font-weight: 600;
   cursor: pointer;

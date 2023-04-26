@@ -5,17 +5,26 @@ import CountryDiv from './CountryDiv'
 import FilterSearch from './FilterSearch'
 import Header from './Header'
 
+interface Params {
+  region?: string;
+  countryName?: string;
+}
+
 function Index() {
   const [darkTheme, setDarkTheme] = useState(false);
   const [countries, setCountries] = useState<Country[]>([]);
   
-  const params = useParams();
+  const params: Params = useParams();
 
   useEffect( () => {
     fetchCountries().then(DATA => {
       if (params.region) {
-        const CountriesFilteredByRegion = DATA.filter(({ region }) => region === params.region);
-        setCountries(CountriesFilteredByRegion);
+        const countriesFilteredByRegion = DATA.filter(({ region }) => region === params.region);
+        setCountries(countriesFilteredByRegion);
+      } else if (params.countryName) {
+        console.log(DATA);
+        const countriesFilteredByName = DATA.filter(({ name }) => name.toLowerCase().includes(params.countryName?.toLowerCase() ?? ''));
+        setCountries(countriesFilteredByName);
       } else {
         setCountries(DATA); 
       }

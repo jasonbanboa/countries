@@ -17,9 +17,13 @@ const router = createBrowserRouter([
     element: <Index />,
   },
   {
+    path: '/search/:countryName',
+    element: <Index />
+  }, 
+  {
     path: '/about/:countryName',
     element: <h1>about page</h1>
-  }
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
