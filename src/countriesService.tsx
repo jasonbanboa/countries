@@ -56,13 +56,6 @@ export type Country = {
 
 export default async function fetchCountries(): Promise<Country[]> {
   const url = '/countries/data.json';
-  const options = {
-    headers : { 
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-     }
-  };
-
-  const DATA = await fetch(url, options).then(res => res.json());
+  const DATA = await fetch(url).then(res => res.json());
   return DATA;
 }
