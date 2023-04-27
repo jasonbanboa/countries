@@ -47,7 +47,7 @@ const About: React.FC = () => {
             
             <div className="wrapper country-data flex">
 
-              <div className="inner-wrapper flex-1">
+              <div className="inner-wrapper flex-1 flex flex-col gap-5px">
                 <div className="f-800">Native Name: <span className="f-300">{country?.nativeName}</span></div>
                 <div className="f-800">Population: <span className="f-300">{country?.population}</span></div>
                 <div className="f-800">Region: <span className="f-300">{country?.region}</span></div>
@@ -55,7 +55,7 @@ const About: React.FC = () => {
                 <div className="f-800">Capital: <span className="f-300">{country?.capital || 'No Capital'}</span></div>
               </div>  
                 
-              <div className="inner-wrapper flex-1">
+              <div className="inner-wrapper flex-1 flex flex-col gap-5px">
                 <div className="f-800">Top Level Domain: <span className="f-300">{country?.topLevelDomain || 'No top level Doamin'}</span></div>
                 <div className="f-800">Currencies: <span className="f-300">{countryCurrency || 'No Currency'}</span></div>
                 <div className="f-800">Languages: <span className="f-300">{countryLanguages || 'No Languages'}</span></div>

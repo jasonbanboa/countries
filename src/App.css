@@ -13,8 +13,8 @@
 a {text-decoration: none; color: inherit; font-weight: inherit;}
 
 img {
-  width: 100%;
   height: 100%;
+  width: 100%;
   vertical-align: middle;
   object-fit: cover;
   border-radius: inherit;
@@ -47,6 +47,8 @@ button {
 .flex {display: flex;}
 .flex-wrap {flex-wrap: wrap;}
 .flex-1 {flex: 1}
+.flex-col {flex-direction: column;}
+.gap-5px {gap: 5px}
 .gap-1 {gap: 1rem}
 .i-center {align-items: center;}
 .mb-4 {margin-bottom: 4rem;}
@@ -242,8 +244,12 @@ main {
   gap: 5rem;
 }
 
+.about-main .img-container {
+  min-width: 460px;
+  max-height: 330px;
+}
 .country-name-h3 {
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   margin-bottom: 1rem;
   font-size: 1.5rem;
 }
@@ -300,3 +306,28 @@ main {
   }
 }
 
+@media (max-width: 840px) {
+  .about-main {gap: 2rem}
+}
+@media (max-width: 820px) {
+  .about-main {gap: 1rem}
+}
+@media (max-width: 800px) {
+  .about-main {flex-direction: column;}
+  .about-main .img-container {max-height: 520px;}
+}
+@media (max-width: 525px) {
+  .country-data {
+    flex-direction: column;
+  }
+  .about-main .img-container {
+    min-width: unset;
+  }
+  .country-data {
+    gap: 1rem;
+  }
+  .country-name-h3 {
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+  }
+}
