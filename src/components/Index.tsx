@@ -32,10 +32,6 @@ function Index() {
     });
   }, [params]);
 
-  useEffect(() => {
-    console.log(countries);
-  }, [countries]);
-
   return (
     <div id="app" className={darkTheme ? "dark-theme" : "light-theme"}>
       <Header />
