@@ -1,20 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ThemeContext } from '../context/Theme';
 
-interface HeaderProps {
-  darkTheme: boolean;
-  setDarkTheme: (b: boolean) => void; 
-}
-
-const Header:React.FC<HeaderProps> = ({ darkTheme, setDarkTheme }) => {
-
-  const handleThemeToggleClick = () => {
-    setDarkTheme(darkTheme ? false: true);
-  }
+const Header:React.FC = () => {
+  const { darkTheme, toggleTheme } = useContext(ThemeContext); 
+  
   return (
     <header>
       <div className="header-container flex">
         <h1><a href="/">Country</a></h1>
-        <div onClick={handleThemeToggleClick} role="button" className="theme-toggle flex gap-1 i-center">
+        <div onClick={() => toggleTheme(darkTheme)} role="button" className="theme-toggle flex gap-1 i-center">
           {darkTheme ?
           <>
             <span style={{borderLeft: '2px solid var(--high-contrast)', paddingLeft: '1rem'}}> Light</span>

@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import { ThemeContext } from '../context/Theme';
 import fetchCountries, { Country } from '../countriesService';
 import Header from './Header';
 
 const About: React.FC = () => {
   const [country, setCountry] = useState<Country>();
-  const [darkTheme, setDarkTheme] = useState(false);
+  const { darkTheme } = useContext(ThemeContext); 
   const params = useParams();
 
   useEffect(() => {
@@ -17,7 +18,7 @@ const About: React.FC = () => {
 
   return (
     <div id="app" className={darkTheme ? "dark-theme" : "light-theme"}>
-      <Header darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
+      <Header />
       <section className="main about-main">
         <div className="wrapper flex mb-4">
           <Link to={'/'}>
@@ -42,7 +43,7 @@ const About: React.FC = () => {
           <div className="f-800">Top Level Domain: <span className="f-300">{country?.topLevelDomain}</span></div>
           <div className="f-800">Currencies: <span className="f-300">{country?.currencies.reduce((acc: string[], { name }) => [...acc, name], []).join(', ')}</span></div>
           <div className="f-800">Languages: <span className="f-300">{country?.languages.reduce((acc: string[], { name }) => [...acc, name], []).join(', ')}</span></div>
-          <div className="f-800">Border Countries: <span className="f-300"></span></div>
+          <div className="f-800">Border Countries: <span className="f-300">{JSON.stringify(country?.borders) || 'No Bordering Countries'}</span></div>
         </article>
       </section>
     </div>

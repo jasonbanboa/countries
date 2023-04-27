@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import './App.css'
 import Index from './components/Index'
 import About from './components/About'
+import { ThemeProvider } from './context/Theme'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -29,6 +30,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 );

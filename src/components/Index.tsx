@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import fetchCountries, { Country } from '../countriesService'
 import { Link, useParams } from 'react-router-dom'
 import CountryDiv from './CountryDiv' 
 import FilterSearch from './FilterSearch'
 import Header from './Header'
+import { ThemeContext } from '../context/Theme' 
 
 interface Params {
   region?: string;
@@ -11,8 +12,8 @@ interface Params {
 }
 
 function Index() {
-  const [darkTheme, setDarkTheme] = useState(false);
   const [countries, setCountries] = useState<Country[]>([]);
+  const { darkTheme } = useContext(ThemeContext); 
   
   const params: Params = useParams();
 
@@ -37,7 +38,7 @@ function Index() {
 
   return (
     <div id="app" className={darkTheme ? "dark-theme" : "light-theme"}>
-      <Header darkTheme={darkTheme} setDarkTheme={setDarkTheme}/>
+      <Header />
       <FilterSearch />
       <main>
         {countries.map((country, i) => {
