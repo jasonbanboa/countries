@@ -55,7 +55,7 @@ export type Country = {
 } 
 
 export default async function fetchCountries(): Promise<Country[]> {
-  const url = '/src/countries/data.json';
+  const url = '/countries/data.json';
   const DATA = await fetch(url).then(res => res.json());
   return DATA;
 }
