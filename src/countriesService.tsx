@@ -63,6 +63,6 @@ export default async function fetchCountries(): Promise<Country[]> {
      }
   };
 
-  const DATA = await fetch(url, options).then(res => res.json()).catch(error => console.log(error));
+  const DATA = await fetch(url, options).then(res => res.json());
   return DATA;
 }
