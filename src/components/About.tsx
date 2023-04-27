@@ -5,16 +5,22 @@ import fetchCountries, { Country } from '../countriesService';
 import Header from './Header';
 
 const About: React.FC = () => {
+  const [countries, setCountries] = useState<Country[]>([]);
   const [country, setCountry] = useState<Country>();
   const { darkTheme } = useContext(ThemeContext); 
   const params = useParams();
 
   useEffect(() => {
     fetchCountries().then(DATA => {
+      setCountries(DATA);
       const foundedCountry = DATA.find(({ name }) => name === params.countryName);
       setCountry(foundedCountry);
     });
   }, [params]);
+
+  const countryCurrency = country?.currencies && country?.currencies.reduce((acc: string[], { name }) => [...acc, name], [] ).join(', ');
+  const countryLanguages = country?.languages && country?.languages.reduce( (acc: string[], { name }) => [...acc, name], [] ).join(', ');
+  const countryBordersArr = country?.borders ? country?.borders.map(countryName => countries?.find(({ alpha3Code }) => countryName === alpha3Code )) as Country[]: false
 
   return (
     <div id="app" className={darkTheme ? "dark-theme" : "light-theme"}>
@@ -39,11 +45,17 @@ const About: React.FC = () => {
           <div className="f-800">Population: <span className="f-300">{country?.population}</span></div>
           <div className="f-800">Region: <span className="f-300">{country?.region}</span></div>
           <div className="f-800">Sub Region: <span className="f-300">{country?.subregion}</span></div>
-          <div className="f-800">Capital: <span className="f-300">{country?.capital}</span></div>
-          <div className="f-800">Top Level Domain: <span className="f-300">{country?.topLevelDomain}</span></div>
-          <div className="f-800">Currencies: <span className="f-300">{country?.currencies.reduce((acc: string[], { name }) => [...acc, name], []).join(', ')}</span></div>
-          <div className="f-800">Languages: <span className="f-300">{country?.languages.reduce((acc: string[], { name }) => [...acc, name], []).join(', ')}</span></div>
-          <div className="f-800">Border Countries: <span className="f-300">{JSON.stringify(country?.borders) || 'No Bordering Countries'}</span></div>
+          <div className="f-800">Capital: <span className="f-300">{country?.capital || 'No Capital'}</span></div>
+          <div className="f-800">Top Level Domain: <span className="f-300">{country?.topLevelDomain || 'No top level Doamin'}</span></div>
+          <div className="f-800">Currencies: <span className="f-300">{countryCurrency || 'No Currency'}</span></div>
+          <div className="f-800">Languages: <span className="f-300">{countryLanguages || 'No Languages'}</span></div>
+          <div className="f-800">Border Countries: 
+            <span className="f-300">{countryBordersArr  
+            ? countryBordersArr.map(({ name }) => {
+              return <span>{name}</span>;
+            }) :'No Bordering Countries'}
+            </span>
+          </div>
         </article>
       </section>
     </div>
